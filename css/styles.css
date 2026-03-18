@@ -54,21 +54,27 @@
 
     /* Spacing */
     /* This is the spacing for inbetween components and elements*/
-    --xs-spacing: 0.5rem;
-    --sm-spacing: 1rem;
-    --md-spacing: 1.5rem;
-    --lg-spacing: 2rem;
-    --xl-spacing: 3rem;
-    --list-indent-spacing: 2.5rem;
+    --xs-spacing: 0.25rem;
+    --sm-spacing: 0.5rem;
+    --md-spacing: 1rem;
+    --lg-spacing: 1.5rem;
+    --xl-spacing: 2rem;
+    --xxl-spacing: 3rem;
     /* Font Spacing and Sizing */
 
+    /* Font-sizing w/ Clamp */
+    --fs-h1: clamp(2.5rem, 4vw, 3.5rem);
+    --fs-h2: clamp(1.75rem, 2.5vw, 2.5rem);
+    --fs-h3: clamp(1.25rem, 1.8vw, 1.75rem);
+    --fs-p: clamp(1rem, 1.2vw, 1.25rem);
+
+    /* Line Heights */
+    --lh-h1: 1.1;
+    --lh-h2: 1.25;
+    --lh-h3: 1.25;
+    --lh-p: 1.65;
 
     /* Text Sizes */
-    --h1size: 3rem;
-    --h2size: 2rem;
-    --h3size: 1.5rem;
-    --h4size: 1.125rem;
-    --psize: 1rem;
     --lisize: 1rem;
     --nav-li-a-size: 1.5rem;
     --mobile-li-text: 1.25rem;
@@ -256,22 +262,12 @@ nav {
     }
 }
 
-
 main {
-    margin: auto 2rem;
-    max-width: 60rem;
-
-
-    @media screen and (min-width: 780px) {
-        margin: auto 4rem;
-        max-width: 70rem;
-    }
-
-
-    @media screen and (min-width: 1024px) {
-        max-width: 100rem;
-        margin: auto 6rem;
-    }
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 5vw, 3rem);
+    padding-right: clamp(1rem, 5vw, 3rem);
 }
 
 section {
@@ -279,52 +275,39 @@ section {
 
 }
 
+/* div {
+    margin-top: var(--sm-spacing);
+} */
+
 h1,
 h2,
-h3,
-h4 {
+h3 {
     color: var(--text-secondary);
-    margin-top: var(--spacing);
     font-family: 'EB Garamond', Georgia, serif;
     letter-spacing: var(--header-kerning);
-
-
 }
 
 h1 {
-    margin-top: var(--lg-spacing);
-    font-size: var(--h1size);
+    font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
+    margin-top: var(--xl-spacing);
 }
 
 h2 {
-    font-size: var(--h2size);
-    margin-top: var(--md-spacing);
-}
-
-h2+p {
-    margin-top: var(--heading-spacing)
+    font-size: var(--fs-h2);
+    line-height: var(--lh-h2);
+    margin-top: var(--lg-spacing);
 }
 
 h3 {
-    font-size: var(--h3size);
-    margin-top: var(--sm-spacing);
-}
-
-h3+p {
-    margin-top: var(--heading-spacing);
-}
-
-h4 {
-    font-size: var(--h4size);
-}
-
-h4+p {
-    margin-top: var(--heading-spacing);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    margin-top: var(--md-spacing);
 }
 
 p {
+    margin-top: var(--md-spacing);
     font-size: var(--psize);
-    margin-top: var(--sm-spacing);
     line-height: var(--body-copy-line-height);
     letter-spacing: var(--kerning);
     max-width: 70ch;
@@ -338,27 +321,22 @@ p {
 
 
     @media screen and (min-width: 700px) {
-        max-width: 80ch;
+        font-size: 1.125rem;
+        line-height: 1.65;
+        max-width: 75ch;
     }
 
     @media screen and (min-width: 1024px) {
-        max-width: 150ch;
+        max-width: 120ch;
+        font-size: 1.25rem;
+        line-height: 1.7;
     }
 }
 
-/* p+p {
-    margin-top: var(--md-spacing);
-}
- */
-
-/* div {
-    margin-top: var(--xs-spacing);
-} */
 
 a {
     color: var(--text-primary);
     text-decoration: none;
-    font-weight: 600;
 
     a:hover {
         color: var(--accent-primary);
@@ -369,21 +347,16 @@ a {
     }
 }
 
-
-
-/* a:visited{
-    color: var(--accent-primary);
-} */
-
 input:focus {
     color: var(--ul-element-focus-ring)
 }
 
 ul {
+    margin-left: var(--xl-spacing);
     margin-top: var(--md-spacing);
-    margin-left: var(--list-indent-spacing);
 
     li {
+        margin-top: var(--md-spacing);
         font-size: var(--lisize);
         line-height: var(--body-copy-line-height);
         color: var(--text-primary);
@@ -394,11 +367,11 @@ ul {
 
 ol {
     margin-top: var(--md-spacing);
-    margin-left: var(--list-indent-spacing);
+    margin-left: var(--xl-spacing);
 
     li {
+        margin-top: var(--md-spacing);
         font-size: var(--lisize);
-        margin-top: var(--sm-spacing);
         line-height: var(--body-copy-line-height);
         color: var(--text-primary);
         font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
@@ -409,39 +382,17 @@ ol {
 
 img {
     width: 100%;
-    margin-top: var(--xs-spacing);
+    margin-top: var(--md-spacing);
 }
 
 video {
     height: auto;
     width: 100%;
-    margin-top: var(--xs-spacing);
-}
-
-picture+p {
-    margin-top: var(--xs-spacing);
-}
-
-/* p+picture {
-    margin-top: var(--xs-spacing);
-} */
-
-/* Spacing Classes */
-.l-zero {
-    margin: 0;
-}
-
-.l-one {
-    margin-top: 1rem;
-}
-
-.l-two {
-    margin-top: 2rem;
 }
 
 footer {
     background-color: var(--brand-primary);
-    margin-top: var(--lg-spacing);
+    margin-top: var(--xxl-spacing);
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -609,60 +560,59 @@ footer {
 /* Portfolio Page Specific Styling */
 .portfolio-container {
 
-    margin-top: var(--xs-spacing);
-
     @media screen and (min-width: 700px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        gap: var(--md-spacing);
 
-        .portfolio-container-item {
+        /* .portfolio-container-item {
             img:last-child {
                 margin: 0;
             }
-        }
+        } */
     }
 
     @media screen and (min-width: 1024px) {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 1rem;
+        gap: var(--md-spacing);
     }
 }
 
 /* About Page Specific Styling */
 
 .about-container {
+
+    margin-top: var(--md-spacing);
+
+    .about-group {
+        margin-top: var(--md-spacing);
+        background-color: var(--bg-section);
+        border: 2px solid var(--ui-element-border);
+        padding: var(--sm-spacing) var(--md-spacing);
+    }
+
+    .about-list {
+
+        li::marker {
+            color: var(--accent-primary);
+        }
+
+        li {
+            margin-left: var(--xl-spacing);
+            ;
+        }
+    }
+
     @media screen and (min-width: 700px) {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        gap: var(--md-spacing);
 
     }
 }
 
-.about-group {
-    background-color: var(--bg-section);
-    border: 2px solid var(--ui-element-border);
-    padding: 0.5rem 1rem;
-    margin-top: var(--md-spacing);
 
-    h3 {
-        margin: 0;
-    }
-}
-
-.about-list {
-    /* margin-left: var(--list-indent-spacing); */
-
-    li::marker {
-        color: var(--accent-primary);
-    }
-
-    li {
-        margin: var(--list-indent-spacing);
-    }
-}
 
 
 /* Hobbies Page Specific Styling */
@@ -678,11 +628,10 @@ footer {
         flex-wrap: wrap;
         justify-content: start;
         list-style: none;
-        padding: 0.5rem 0 0.5rem 0.5rem;
+        padding: var(--sm-spacing) 0 var(--sm-spacing) var(--sm-spacing);
 
 
         li {
-            margin-top: var(--sm-spacing);
             font-size: var(--h4size);
 
 
@@ -696,15 +645,13 @@ footer {
 
         }
 
-        li:nth-child(1) {
+        /* li:nth-child(1) {
             margin-top: 0;
-        }
+        } */
     }
 
     @media screen and (min-width: 500px) {
-        /* background-color: var(--bg-section); */
         border-bottom: 2px solid var(--ui-element-border);
-        margin-top: var(--md-spacing);
 
         ul {
             margin: 0;
@@ -749,43 +696,38 @@ footer {
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
     }
-}
 
-.directions-container-styling {
-    background-color: var(--bg-surface);
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--ui-element-border);
-    margin-top: var(--heading-spacing);
+    .directions-container-styling {
+        background-color: var(--bg-surface);
+        padding: var(--sm-spacing) var(--md-spacing);
+        border: 1px solid var(--ui-element-border);
 
-    h3 {
-        margin: 0;
-    }
-
-    ul {
-        list-style: none;
-
-        li {
-            margin-top: 1rem;
-
+        h3 {
+            margin: 0;
         }
 
-        input[type="checkbox"] {
-            accent-color: var(--accent-primary);
-            margin-right: 1rem;
-            transform: scale(1.5);
-        }
+        ul {
+            list-style: none;
 
+            input[type="checkbox"] {
+                accent-color: var(--accent-primary);
+                margin-right: 1rem;
+                transform: scale(1.5);
+            }
+
+        }
     }
 }
+
+
 
 /* This controls the instructions container */
 .instructions-container-styling {
     ol {
         list-style: none;
-        margin-top: var(--heading-spacing);
+        margin: 0;
 
         li {
-            margin-top: 0.5rem;
 
             span {
                 background-color: var(--bg-surface);
@@ -804,71 +746,71 @@ footer {
 
 .retro-grid-container {
 
-    margin-top: var(--sm-spacing);
-
     @media screen and (min-width: 700px) {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-}
 
-.retro-grid-item-1 {
+    .retro-grid-item-1 {
 
-    @media screen and (min-width: 700px) {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / 3;
-        border: 2px solid var(--ui-element-border);
-        padding: 0 0.5rem;
-        background-color: var(--bg-section);
-    }
-}
-
-.retro-grid-item-2 {
-    @media screen and (min-width: 700px) {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / 3;
-        border: 2px solid var(--ui-element-border);
-        padding: 0 0.5rem;
-        background-color: var(--bg-section);
-
-    }
-}
-
-.retro-grid-item-3 {
-    @media screen and (min-width: 700px) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column: 1 / 3;
-        border: 2px solid var(--ui-element-border);
-        padding: 0 0.5rem;
-        background-color: var(--bg-section);
-
-        img {
-            margin: 0;
+        @media screen and (min-width: 700px) {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / 3;
+            border: 2px solid var(--ui-element-border);
+            padding: 0 var(--sm-spacing);
+            background-color: var(--bg-section);
         }
+    }
 
-        p {
-            padding-left: 0.5rem;
+    .retro-grid-item-2 {
+        @media screen and (min-width: 700px) {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / 3;
+            border: 2px solid var(--ui-element-border);
+            padding: 0 var(--sm-spacing);
+            background-color: var(--bg-section);
+
         }
+    }
 
+    .retro-grid-item-3 {
+        @media screen and (min-width: 700px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column: 1 / 3;
+            border: 2px solid var(--ui-element-border);
+            padding: 0 var(--sm-spacing);
+            background-color: var(--bg-section);
+
+            img {
+                margin: 0;
+            }
+
+            p {
+                padding-left: var(--sm-spacing);
+            }
+
+        }
+    }
+
+    .retro-grid-item-4 {
+        @media screen and (min-width: 700px) {
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / 3;
+            border: 2px solid var(--ui-element-border);
+            padding: 0 var(--sm-spacing);
+            background-color: var(--bg-section);
+
+        }
     }
 }
 
-.retro-grid-item-4 {
-    @media screen and (min-width: 700px) {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / 3;
-        border: 2px solid var(--ui-element-border);
-        padding: 0 0.5rem;
-        background-color: var(--bg-section);
 
-    }
-}
-
+/* -- I don't remember what the hell this was for
 @media screen and (min-width: 700px) {
 
     ul {
@@ -876,11 +818,11 @@ footer {
         margin: 0 2rem 2rem 2rem;
         display: inline;
 
-        li {
+        /* li {
             margin-top: var(--md-spacing);
-        }
-    }
-}
+        } */
+
+/*
 
 /* These selectors are used for the grid for the section mtg */
 
@@ -903,7 +845,7 @@ footer {
     grid-template-columns: 1fr;
     gap: 0.5rem;
     align-items: start;
-    margin-top: var(--xs-spacing);
+
 
     .mtg-grid-item-1,
     .mtg-grid-item-2,

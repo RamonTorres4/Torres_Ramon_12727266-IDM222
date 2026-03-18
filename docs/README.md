@@ -203,3 +203,10 @@ Borders have a weight of 2px for navs and footers.
 - <https://codebeautify.org/rem-to-percent-converter>
 - <https://nekocalc.com/px-to-rem-converter>
 - <https://validator.w3.org/nu/>
+
+## Site Structire
+
+- Main
+  - Section
+    - Article
+  
