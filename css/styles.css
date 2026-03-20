@@ -347,6 +347,16 @@ a {
     }
 }
 
+span {
+    font-weight: 700;
+    color: var(--brand-primary);
+
+    a {
+        text-decoration: underline;
+    }
+
+}
+
 input:focus {
     color: var(--ul-element-focus-ring)
 }
@@ -484,7 +494,9 @@ footer {
             text-decoration: underline var(--bg-surface);
             width: 100%;
 
+
             a {
+                color: var(--white);
 
                 &:hover,
                 &:active {
@@ -620,6 +632,8 @@ footer {
 .hobbies-nav {
     background-color: var(--bg-primary);
     border: 2px solid var(--ui-element-border);
+    margin-top: var(--md-spacing);
+
 
     ul {
         margin: 0;
@@ -633,6 +647,7 @@ footer {
 
         li {
             font-size: var(--h4size);
+            margin: var(--xs-spacing);
 
 
 
@@ -651,6 +666,8 @@ footer {
     }
 
     @media screen and (min-width: 500px) {
+        background-color: var(--bg-primary);
+        margin-top: var(--md-spacing);
         border-bottom: 2px solid var(--ui-element-border);
 
         ul {
@@ -867,6 +884,10 @@ footer {
             ul {
                 list-style: none;
                 margin: 0;
+
+                li {
+                    margin: 0;
+                }
             }
 
             img {
